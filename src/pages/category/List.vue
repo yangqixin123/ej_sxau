@@ -43,10 +43,13 @@
             </el-input>
           </el-form-item>
           <el-form-item label="父栏目">
-            <el-select  v-model="form.parentId">
-              <el-option>
-              "1111"
-              </el-option>
+            <el-select  v-model="form.parentId" placeholder="请选择">
+             <el-option
+             v-for="item in options"
+             :key="item.id"
+             :label="item.parentId"
+            :value="item.id">
+             </el-option>
             </el-select>
           </el-form-item>      
         </el-form>
@@ -66,7 +69,13 @@ import request from "@/utils/request"//@=src目录,第三方库需要加路径
 import querystring from "querystring"//系统库，不用加路径
 export default {
     methods:{
-
+      loadCategoty(){
+        let url="http://localhost:6677/category/findAll";
+        request.get(url).then((response)=>{
+            // 将查询结果设置到customers中，this只想外部函数的this
+            this.options = response.data;
+        })
+    },
           //提交方法
         submitHandler(){
           //前端向后台发送请求，完成数据的保存操作
@@ -104,6 +113,7 @@ request.get(url).then((response)=>{
         toAddHandler(){//添加
             this.visible=true;
             this.title = "录入栏目信息"
+            this.loadCategoty();
         },
 
         closeModalHandler(){//取消方法
@@ -143,8 +153,8 @@ request.get(url).then((response)=>{
         title:"录入栏目信息",
         visible:false,
         categorys:[],
+        options:[],
         form:{
-        type:"category"
       }
         }
     },
