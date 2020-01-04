@@ -10,7 +10,7 @@
             <el-table-column prop="name" label="产品名称"></el-table-column>
             <el-table-column prop="price" label="价格"></el-table-column>
             <el-table-column prop="description" label="描述"></el-table-column>
-            <el-table-column prop="categoryId" label="所属产品"></el-table-column>
+            <el-table-column prop="categoryId" label="所属分类"></el-table-column>
             <el-table-column prop="id" label="操作">
                 <template v-slot="slot">
                     <a href="" @click.prevent="toDeleteHandle(slot.row.id)">删除</a>
@@ -27,23 +27,23 @@
         <!-- /分页结束 -->        
         <!-- 模态框 -->
         <el-dialog
-          title="录入顾客信息"
+          title="录入产品信息"
           :visible.sync="visible"
           width="60%">
           <el-form :model="form" label-width="80px">
-              <el-form-item label="名称">
+              <el-form-item label="产品名称">
                   <el-input v-model="form.name"></el-input>
               </el-form-item>
               <el-form-item label="价格">
                   <el-input v-model="form.price"></el-input>
               </el-form-item>
               <el-form-item label="所属栏目">
-                  <el-select v-model="form.status" placeholder="请选择">
+                  <el-select v-model="form.categoryId" placeholder="请选择">
                        <el-option
                             v-for="item in options"
-                            :key="item.value"
+                            :key="item.id"
                             :label="item.name"
-                             :value="item.parentId">
+                             :value="item.id">
                       </el-option>
                  </el-select>
               </el-form-item>
@@ -88,6 +88,13 @@ export default {
         request.get(url).then((response)=>{
             // 将查询结果设置到customers中，this只想外部函数的this
             this.products = response.data;
+        })
+    },
+    loadCategoty(){
+        let url="http://localhost:6677/category/findAll";
+        request.get(url).then((response)=>{
+            // 将查询结果设置到customers中，this只想外部函数的this
+            this.options = response.data;
         })
     },
         submitHandler(){
@@ -147,13 +154,7 @@ export default {
             this.visible = true;
         },  
         toAddHandler(){
-            let url = "http://localhost:6677/category/findAll"
-            request.get(url).then((response)=>{
-                this.options = response.data;
-            })
-            this.form ={
-                type:"products"
-            }
+            this.form ={ }
             this.visible = true;
             this.loadData();
             
@@ -164,14 +165,14 @@ export default {
         return{
             visible:false,
             products:[],
-            form:{
-                type:"products"
-            }
+            options:[],
+            form:{ }
         }
     },
 
     created(){
         this.loadData();
+        this.loadCategoty();
     }
   
     
