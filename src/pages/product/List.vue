@@ -84,14 +84,14 @@ export default {
     //用于存放页面中需要调用的方法
     methods:{
     loadData(){
-        let url="http://localhost:6677/product/findAll";
+        let url="http://134.175.154.93:6677/product/findAll";
         request.get(url).then((response)=>{
             // 将查询结果设置到customers中，this只想外部函数的this
             this.products = response.data;
         })
     },
     loadCategoty(){
-        let url="http://localhost:6677/category/findAll";
+        let url="http://134.175.154.93:6677/category/findAll";
         request.get(url).then((response)=>{
             // 将查询结果设置到customers中，this只想外部函数的this
             this.options = response.data;
