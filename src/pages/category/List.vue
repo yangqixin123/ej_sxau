@@ -70,7 +70,7 @@ import querystring from "querystring"//系统库，不用加路径
 export default {
     methods:{
       loadCategoty(){
-        let url="http://localhost:6677/category/findAll";
+        let url="http://134.175.154.93:6677/category/findAll";
         request.get(url).then((response)=>{
             // 将查询结果设置到customers中，this只想外部函数的this
             this.options = response.data;
