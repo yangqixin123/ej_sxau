@@ -15,8 +15,8 @@
       <el-table-column prop="parentId" label="父栏目"></el-table-column>
       <el-table-column fixed="right" label="操作">
               <template v-slot="slot"><!--获取操作数据-->
-              <a class="el-icon-delete" href="" @click.prevent="toDeleteHandler(slot.row.id)"></a>
-              <a class="el-icon-edit" href="" @click.prevent="toUpdataHandler(slot.row)"></a>
+              <a class="el-icon-delete" href="" @click.prevent="toDeleteHandler(slot.row.id)">删除</a>
+              <a class="el-icon-edit" href="" @click.prevent="toUpdataHandler(slot.row)">编辑</a>
               </template>
             </el-table-column>
         </el-table>
@@ -43,9 +43,12 @@
             </el-input>
           </el-form-item>
           <el-form-item label="父栏目">
-            <el-input v-model="form.parentId"><!--v-model双向数据绑定-->
-            </el-input>
-          </el-form-item>
+            <el-select  v-model="form.parentId">
+              <el-option>
+              "1111"
+              </el-option>
+            </el-select>
+          </el-form-item>      
         </el-form>
       </span>
       <span slot="footer" class="dialog-footer">
@@ -63,6 +66,7 @@ import request from "@/utils/request"//@=src目录,第三方库需要加路径
 import querystring from "querystring"//系统库，不用加路径
 export default {
     methods:{
+
           //提交方法
         submitHandler(){
           //前端向后台发送请求，完成数据的保存操作
@@ -86,6 +90,7 @@ export default {
       })
       })     
         },
+
         //重载数据
         loadData(){
 //vue实例创建完毕执行操作
@@ -95,13 +100,16 @@ request.get(url).then((response)=>{
   this.categorys = response.data  //把查询结果放置到product中
 })
     },
+
         toAddHandler(){//添加
             this.visible=true;
             this.title = "录入栏目信息"
         },
+
         closeModalHandler(){//取消方法
             this.visible = false;
         },
+
         toDeleteHandler(id){
            //确认
           this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
@@ -123,6 +131,7 @@ request.get(url).then((response)=>{
          
         })
         },
+      
         toUpdataHandler(row){
           this.title="修改栏目信息",
             this.visible=true;
