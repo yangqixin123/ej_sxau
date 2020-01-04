@@ -15,8 +15,8 @@
             <el-table-column prop="telephone" label="电话"></el-table-column>
             <el-table-column  label="操作">
                 <template v-slot="slot">
-                    <a href="" @click.prevent="toDeleteHandler(slot.row.id)">删除</a>
-                    <a href="" @click.prevent="toUpdateHandler(slot.row)">修改</a>
+                    <a class="el-icon-delete" href="" @click.prevent="toDeleteHandler(slot.row.id)">删除</a>
+                    <a class="el-icon-edit" href="" @click.prevent="toUpdateHandler(slot.row)">修改</a>
                 </template>
             </el-table-column>
         </el-table>
