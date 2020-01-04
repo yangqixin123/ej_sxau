@@ -49,7 +49,7 @@ export default {
       console.log(tab, event);
     },
     loadData() {
-      let url = "http://134.175.154.93:6677/order/queryPage";
+      let url = "http://134.175.154.93:6677/order/queryPage"
       request({
         url,
         method:"post",
