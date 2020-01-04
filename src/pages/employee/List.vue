@@ -135,6 +135,9 @@ export default {
     toAddHandler(){
       this.title="录入员工信息";
       this.visible=true;
+      this.form={
+                type:"waiter"
+            }
     }
   }
 }
