@@ -155,6 +155,7 @@ export default {
                 type:"products"
             }
             this.visible = true;
+            this.loadData();
             
         }
     },
