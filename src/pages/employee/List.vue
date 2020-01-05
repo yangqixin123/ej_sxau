@@ -83,13 +83,13 @@ export default {
   //方法,存放网页中需要调用的方法
   methods:{
     loadData(){
-      let url = "http://134.175.154.93:6677/waiter/findAll"
+      let url = "http://localhost:6677/waiter/findAll"
       request.get(url).then((response)=>{
         this.employees = response.data;
       })
     },
     submitHandler(){
-       let url = "http://134.175.154.93:6677/waiter/saveOrUpdate"
+       let url = "http://localhost:6677/waiter/saveOrUpdate"
       request({
         url,
         method:"POST",
@@ -113,7 +113,7 @@ export default {
           type: 'warning'
         }).then(() => {
           //调用后台接口，完成删除操作
-        let url = "http://134.175.154.93:6677/waiter/deleteById?id="+id;
+        let url = "http://localhost:6677/waiter/deleteById?id="+id;
         request.get(url).then((response)=>{
           //刷新数据，提示结果
         this.loadData();
