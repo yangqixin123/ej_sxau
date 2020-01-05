@@ -68,7 +68,7 @@ export default {
     //用于存放网页中需要调用的方法
     methods:{
         loadData(){
-             let url="http://localhost:6677/address/findAll"
+             let url="http://134.175.154.93:6677/address/findAll"
              request.get(url).then((response)=>{
             //将匿名函数改为箭头函数指向外部函数的this
             //将查询结果设置到customers中
@@ -77,7 +77,7 @@ export default {
         },
         submitHandler(){
             //通过request与后台逻辑进行交互，并且携带参数
-            let url="http://localhost:6677/address/saveOrUpdate"
+            let url="http://134.175.154.93:6677/address/saveOrUpdate"
             request({
                 url,
                 method:"POST",
@@ -103,7 +103,7 @@ export default {
           type: 'warning'
         }).then(() => {
           //调用后台接口完成删除操作
-          let url="http://localhost:6677/address/deleteById?id="+id;
+          let url="http://134.175.154.93:6677/address/deleteById?id="+id;
           request.get(url).then((response)=>{
               //刷新数据
                 this.loadData();
