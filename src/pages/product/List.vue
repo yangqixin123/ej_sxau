@@ -102,6 +102,7 @@ export default {
         request.get(url).then((response)=>{
             // 将查询结果设置到customers中，this只想外部函数的this
             this.options = response.data;
+            this.closeModalHandler();
         })
     },
         submitHandler(){
