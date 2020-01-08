@@ -31,7 +31,6 @@
       :title="title"
       :visible.sync="visible"
       width="60%">
-      {{form}}
       <span>
          <el-form :model="form" label-width="80px">
           <el-form-item label="栏目名称">
@@ -70,7 +69,7 @@ import querystring from "querystring"//系统库，不用加路径
 export default {
     methods:{
       loadCategoty(){
-        let url="http://134.175.154.93:6677/category/findAll";
+        let url="http://123.57.92.11:6677/category/findAll";
         request.get(url).then((response)=>{
             // 将查询结果设置到customers中，this只想外部函数的this
             this.options = response.data;
@@ -79,7 +78,7 @@ export default {
           //提交方法
         submitHandler(){
           //前端向后台发送请求，完成数据的保存操作
-    let url="http://134.175.154.93:6677/category/saveOrUpdate"
+    let url="http://123.57.92.11:6677/category/saveOrUpdate"
     request({
       url,
       method:"POST",
@@ -103,7 +102,7 @@ export default {
         //重载数据
         loadData(){
 //vue实例创建完毕执行操作
-let url="http://134.175.154.93:6677/category/findAll"
+let url="http://123.57.92.11:6677/category/findAll"
 request.get(url).then((response)=>{
   //过滤后的结果
   this.categorys = response.data  //把查询结果放置到product中
@@ -128,7 +127,7 @@ request.get(url).then((response)=>{
           type: 'warning'
         }).then(() => {
           //调用后台接口,完成删除操作
-          let url = "http://134.175.154.93:6677/category/deleteById?id="+id;
+          let url = "http://123.57.92.11:6677/category/deleteById?id="+id;
           request.get(url).then((response)=>{
             //刷新数据
             this.loadData();

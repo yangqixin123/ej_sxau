@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{params}}
     <!-- 选项卡 -->
     <el-tabs v-model="params.status" @tab-click="loadData">
       <el-tab-pane label="全部" name="全部"></el-tab-pane>

@@ -128,7 +128,7 @@ export const constantRoutes = [
         path: 'list',
         name: 'CommentList',
         component: () => import('@/pages/comment/List'),
-        meta: { title: '评论管理', icon: 'example' }
+        meta: { title: '评论管理', icon: 'link' }
       }
     ]
   },
@@ -141,7 +141,7 @@ export const constantRoutes = [
         path: 'list',
         name: 'AddressList',
         component: () => import('@/pages/address/List'),
-        meta: { title: '地址管理', icon: 'example' }
+        meta: { title: '地址管理', icon: 'nested' }
       }
     ]
   },
