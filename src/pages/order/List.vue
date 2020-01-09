@@ -43,7 +43,7 @@
       <div>
         <p> <strong>订单编号：</strong> {{form.id}} </p>
         <p> <strong>订单总价：</strong> {{form.total}} </p>
-        <p> <strong>下单时间：</strong> {{form.orderTime}} </p>
+        <p> <strong>下单时间：</strong> {{form.orderTime | datefmt}} </p>
         <p> 
           <strong>服务员工：</strong> 
            <el-radio-group v-model="waiterId">
@@ -153,7 +153,8 @@ export default {
     this.loadData();
     // 加载员工信息
     this.loadEmployees();
-  }
+  },
+  
 }
 </script>
 <style scoped>
