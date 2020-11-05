@@ -11,9 +11,10 @@
     </el-tabs>
     <!-- /选项卡 -->
     <!-- 表格 -->
+    <!-- <el-table :data="orders.list"> -->
     <el-table :data="orders.list">
       <el-table-column prop="id" label="编号"></el-table-column>
-      <el-table-column width="200" prop="orderTime" label="下单时间"></el-table-column>
+      <el-table-column prop="orderTime" label="下单时间" width="200"></el-table-column>
       <el-table-column prop="total" label="总价"></el-table-column>
       <el-table-column prop="status" label="状态"></el-table-column>
       <el-table-column prop="customerId" label="顾客ID"></el-table-column>
@@ -67,6 +68,7 @@
 <script>
 import request from '@/utils/request'
 import querystring from 'querystring'
+import moment from 'moment'
 export default {
   // 用于存放网页中需要调用的方法
   methods:{
@@ -100,6 +102,13 @@ export default {
       }).then((response)=>{
           // orders为一个对象，其中包含了分页信息，以及列表信息
           this.orders = response.data;
+          this.orders.list.map((item)=>{
+            item.orderTime = moment(item.orderTime).format('YYYY-MM-DD HH:mm:ss')
+            //大佬用原生js写的时间戳转换
+            // var date = new Date(item.orderTime);
+            // item.orderTime = date.toLocaleString()
+          })
+          
       })
     },
     submitHandler(){
@@ -138,6 +147,7 @@ export default {
     return {
       visible:false,
       orders:{},
+      orderTime:[],
       form:{},  // 当前订单
       params:{
           page:0,
