@@ -11,7 +11,11 @@
             <el-table-column prop="price" label="价格"></el-table-column>
             <el-table-column prop="description" label="描述"></el-table-column>
             <el-table-column prop="categoryId" label="所属分类"></el-table-column>
-         <el-table-column width="650px" prop="photo" label="照片"></el-table-column>
+            <el-table-column prop="photo" label="照片">
+                <template slot-scope="scope">
+                    <el-image style="width: 100px; height: 100px" :src="scope.row.photo"></el-image>
+                </template>
+            </el-table-column>
             <el-table-column prop="id" label="操作">
                 <template v-slot="slot">
                     <a href="" @click.prevent="toDeleteHandle(slot.row.id)">删除</a>
@@ -177,7 +181,7 @@ export default {
             products:[],
             options:[],
             fileList:[],
-            form:{ }
+            form:{},
         }
     },
 
