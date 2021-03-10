@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="root">
     <!-- 按钮 -->
     <div>
     <el-button type="primary" size="small"  @click="toAddHandler">添加</el-button>
@@ -144,5 +144,7 @@ export default {
 </script>
 
 <style scoped>
-
+.root{
+    margin: 1%;
+}
 </style>

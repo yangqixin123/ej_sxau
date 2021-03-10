@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="root">
         <!-- 按钮 -->
         <el-button type="success" size="small" @click="toAddHandler" >添加</el-button>
         <el-button type="danger" size="small">批量删除</el-button>
@@ -195,5 +195,7 @@ export default {
 </script>
 
 <style scoped>
-
+.root{
+    margin: 1%;
+}
 </style>

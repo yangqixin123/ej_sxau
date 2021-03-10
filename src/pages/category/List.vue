@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="root">
 
     <!-- 按钮 -->
     <el-button type="success" size="small" @click="toAddHandler">添加</el-button> 
@@ -164,5 +164,7 @@ request.get(url).then((response)=>{
 }
 </script>
 <style scoped>
-
+.root{
+    margin: 1%;
+}
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="root">
     <!-- 选项卡 -->
     <el-tabs v-model="params.status" @tab-click="loadData">
       <el-tab-pane label="全部" name="全部"></el-tab-pane>
@@ -168,4 +168,7 @@ export default {
 }
 </script>
 <style scoped>
+.root{
+    margin: 1%;
+}
 </style>
